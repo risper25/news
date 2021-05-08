@@ -1,0 +1,26 @@
+{% extends './news.html' %}
+
+{% block content %}	
+{% for r in res.value %}
+	
+<div class="blog-post">
+	<div class="blog-post_img">
+		<img src="{{r.image.thumbnail.contentUrl}}" alt="">
+		
+	</div>
+	<div class="blog-post_info">
+		<div class="blog-post_date">
+			<span>Sunday</span>
+			<span>October 27 2019</span>
+
+		</div>
+		<h1 class="blog-post_title">{{r.name}}</h1>
+		<p class="blog-post_text">
+			{{r.description}}
+		</p>
+		<a href="{{r.url}}" class="blog-post_cta" target="_blank">read more</a>
+	</div>
+</div>
+{% endfor %}
+
+{% endblock %}

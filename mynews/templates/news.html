@@ -1,0 +1,54 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="{% static 'CSS/main.css' %}">
+</head>
+<body>
+	<div class="nav-bar">
+		<ul>
+				<li><form action="{% url 'searched' %}" method="get">
+		<input type="text" name="search">
+		<button type="submit">search</button>
+	</form></li>
+		<li><a href= "{% url 'category' 'Business' %}">Business</a></li>
+		<li><a href="{% url 'category' 'Entertainment' %}">Entertainment</a></li>
+		<li><a href="{% url 'category' 'Health' %}">Health</a></li>
+		<li><a href="{% url 'category' 'Politics' %}">Politics</a></li>
+		<li><a href="{% url 'category' 'Technology' %}">Technology</a></li>
+
+		</ul>
+		
+	</div>
+	<div class="container">
+		{% block content %}
+		{% for r in response.value %}
+		
+		
+
+<div class="blog-post">
+	<div class="blog-post_img">
+		<img src="{{r.image.thumbnail.contentUrl}}" alt="">
+		
+	</div>
+	<div class="blog-post_info">
+		<div class="blog-post_date">
+			<span>Sunday</span>
+			<span>October 27 2019</span>
+
+		</div>
+		<h1 class="blog-post_title">{{r.name}}</h1>
+		<p class="blog-post_text">
+			{{r.description}}
+		</p>
+		<a href="{{r.url}}" class="blog-post_cta" target="_blank">read more</a>
+	</div>
+</div>
+{% endfor %}
+{% endblock %}
+</div>
+
+</body>
+</html>
